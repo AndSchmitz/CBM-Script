@@ -359,7 +359,7 @@ if ( WeakAcidGapFilling == "CB_WithCorrection" ) {
     #"CB_WithCorrection", then apply the correction to reduce the bias of CB
     #approach compared to the MA approach. The empirical correction function
     #applied has been established based on data from Germany 2000-2015
-    DB$BC_CL_D95[idx_WAMA_miss] <- DB$BC_CL_D95[idx_WAMA_miss] * 0.638 + 0.284
+    DB$BC_CL_D95[idx_WAMA_miss] <- DB$BC_CL_D95[idx_WAMA_miss] * 0.745 + 0.265
   }
 }
 #
