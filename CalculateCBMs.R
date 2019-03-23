@@ -1,18 +1,20 @@
-#Please report any bugs/errors to
-#andreas.schmitz@thuenen.de
-
-
-#This script implements the canopy budget models according to:
+#2019-03-23
+#
+#Andreas Schmitz, Bernd Ahrends, Henning Andreae
+#Please report any bugs and suggestions to andreas.schmitz@thuenen.de
+#
+#This script implements three common canopy budget models to estimate interception deposition, total deposition and
+#canopy exchange for several substances based on annual deposition rates in the open field and under canopy.
 #
 #U94:  Ulrich, B. (1994): Nutrient and Acid-Base Budget of Central European Forest Ecosystems. In: Godbold, D. & A. Hüttermann:
-# Effects of Acid Rain on Forest Processes. Wiley-Liss. New York. p. 1-50.
+#Effects of Acid Rain on Forest Processes. Wiley-Liss. New York. p. 1-50.
 # 
 #D95:  Draaijers, G. P. J. & J. W. Erisman (1995): A canopy budget model to assess atmospheric deposition from throughfall measurements.
-# Water, Air, and Soil Pollution, 85, 2253-2258.
+#Water, Air, and Soil Pollution, 85, 2253-2258.
 # 
 #V01:  De Vries, W., Reinds, G.J., van der Salm, C., Draaijers, G.P.J., Bleeker, A., Erisman, J.W., Auée, J., Gundersen, P., Kristensen,
-# H.L., van Dobben, H., de Zwart, D., Derome, J., Voogd, J.H.C., Vel, E.M., 2001. Intensive Monitoring of Forest Ecosystems in
-# Europe. Technical Report 2001. EC, UNECE, Forest Intensive Monitoring Coordinating Institute (FIMCI), Brussels, Geneva.
+#H.L., van Dobben, H., de Zwart, D., Derome, J., Voogd, J.H.C., Vel, E.M., 2001. Intensive Monitoring of Forest Ecosystems in
+#Europe. Technical Report 2001. EC, UNECE, Forest Intensive Monitoring Coordinating Institute (FIMCI), Brussels, Geneva.
 
 
 CalculateCBMs <- function(
