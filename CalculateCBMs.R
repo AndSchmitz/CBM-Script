@@ -437,15 +437,15 @@ DB <- DB[,colnames(DB) != "N_TD_U94V01_Max"]
 #Acid deposition ----
 DB$H_TD_U83ClSO2 <- DB$H_OF + DB$H_DD_p + DB$S_SO4_DD_g + DB$Cl_DD_g
 DB$H_TD_U83SO2 <- DB$H_OF + DB$H_DD_p + DB$S_SO4_DD_g
-DB$Ac_TD_U83 <- DB$H_TD_U83SO2 + DB$N_NH4_UC
-DB$Ac_TD_U94 <- DB$H_TD_U83ClSO2 + DB$N_NH4_UC + DB$N_NO3_DD_g - DB$N_NH3_DD_g
-DB$Ac_TD_U94[which(DB$Ac_TD_U94 < 0)] <- 0
+DB$AC_TD_U83_keq <- DB$H_TD_U83SO2 + DB$N_NH4_UC
+DB$AC_TD_U94 <- DB$H_TD_U83ClSO2 + DB$N_NH4_UC + DB$N_NO3_DD_g - DB$N_NH3_DD_g
+DB$AC_TD_U94[which(DB$AC_TD_U94 < 0)] <- 0
 DB$AC_TD_D95 <- DB$H_UC + DB$N_NH4_UC + DB$H_CU_D95 + DB$N_NH4_CU_D95
 DB$H_CU_U83 <- DB$H_TD_U83SO2 - DB$H_UC
 DB$H_CU_U83[which(DB$H_CU_U83 < 0)] <- 0
 DB$H_CU_U83Cl <- DB$H_TD_U83ClSO2 - DB$H_UC
 DB$H_CU_U83Cl[which(DB$H_CU_U83Cl < 0)] <- 0
-DB$H_CU_U94 <- DB$Ac_TD_U94 - DB$H_UC
+DB$H_CU_U94 <- DB$AC_TD_U94 - DB$H_UC
 DB$H_CU_U94[which(DB$H_CU_U94 < 0)] <- 0
 
 CheckRoutine(DB)
@@ -502,7 +502,7 @@ keqToKgDF$Substance <- as.character(keqToKgDF$Substance)
   
 #2. Define columns to remain in keq
 ColsKeepKeq <- c("BC_TD_V01","BC_UC_V01","BC_CL","BC_CL_D95","BC_CL_V01","CatIon_UC","Anion_UC","WA_UC","CatIon_OF","Anion_OF","WA_OF",
-                 "WA_CL","WA_DD","H_TD_U83ClSO2","H_TD_U83SO2","Ac_TD_U83","Ac_TD_U94","Ac_TD_pot","AC_TD_D95",
+                 "WA_CL","WA_DD","H_TD_U83ClSO2","H_TD_U83SO2","AC_TD_U83_keq","AC_TD_U94","AC_TD_D95",
                  "H_CU_U83","H_CU_U83Cl","H_CU_U94","N_NH4_H_CU_V01","CatIon_UC_TI","Anion_UC_TI","WA_UC_TI","WA_OF_TI","CatIon_OF_TI","Anion_OF_TI","WA_CL_TI","BC_TD_TI",
                  "BC_UC_TI","BC_CL_TI","N_NH4_H_CU_TI","WA_UC_MA","WA_OF_MA","WA_UC_CB","WA_OF_CB")
 
