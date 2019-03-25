@@ -6,7 +6,7 @@ options(stringsAsFactors = FALSE,warnPartialMatchDollar=T)
 
 
 #Define work dir
-WorkDir <- "C:\\work\\Thuenen Cloud sync\\Canopy budget models R script\\Version 2019-03-21"
+WorkDir <- "C:\\work\\Thuenen Cloud sync\\Canopy budget models R script\\Version 2019-03-25"
 
 
 #Make the CBM-function available
