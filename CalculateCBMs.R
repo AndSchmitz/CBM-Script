@@ -1,4 +1,4 @@
-#2019-03-25
+#2019-05-27
 #
 #Andreas Schmitz, Bernd Ahrends, Henning Andreae
 #Please report any bugs and suggestions to andreas.schmitz@thuenen.de
@@ -429,9 +429,12 @@ CheckRoutine(DB)
 
 #N_TD upper and lower boundaries-------
 DB$N_TD_U94V01_Max <- apply(X=DB[,c("N_TD_U94","N_TD_V01")],MARGIN=1,FUN=function(x) ifelse(all(is.na(x)),NA,max(x,na.rm=T)))
-DB$N_TD_LowerBoundary <- DB$N_NH4_UC + DB$N_NO3_UC + DB$N_Org_OF
+DB$N_inorg_OF <- DB$N_NH4_OF + DB$N_NO3_OF
+DB$N_inorg_UC <- DB$N_NH4_UC + DB$N_NO3_UC
+DB$N_inorg_MeasuredMax <- apply(X=DB[,c("N_inorg_OF","N_inorg_UC")],MARGIN=1,FUN=function(x) ifelse(all(is.na(x)),NA,max(x,na.rm=T)))
+DB$N_TD_LowerBoundary <- DB$N_inorg_MeasuredMax + DB$N_Org_OF
 DB$N_TD_UpperBoundary <- DB$N_TD_U94V01_Max + DB$N_Org_OF
-DB <- DB[,colnames(DB) != "N_TD_U94V01_Max"]
+DB <- DB[,!( colnames(DB) %in% c("N_TD_U94V01_Max","N_inorg_OF","N_inorg_UC","N_inorg_MeasuredMax") )]
 
 
 #Acid deposition ----
