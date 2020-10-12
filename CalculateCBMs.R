@@ -132,7 +132,7 @@ CheckRoutine <- function(x) {
 #_Definition of molar masses and valences to convert from keq to kg--------
 MassValenceInfo <- data.frame(
   Substance = c("H","N_NH4","K","Ca","Mg","Na","Cl","S_SO4","N_NO3","N_tot","Mn","N_Org"),
-  MolarMass = c(1.008,14.007,39.098,40.078,24.305,22.99,35,32,14.007,14.007,55,14.007),
+  MolarMass = c(1.008,14.007,39.098,40.078,24.305,22.99,35.453,32.065,14.007,14.007,54.938,14.007),
   Valence = c(1,1,1,2,2,1,1,2,1,1,2,1)
 )
 MassValenceInfo$ConversionFactor <- MassValenceInfo$MolarMass / MassValenceInfo$Valence  
@@ -440,7 +440,7 @@ DB <- DB[,!( colnames(DB) %in% c("N_TD_U94V01_Max","N_inorg_OF","N_inorg_UC","N_
 #Acid deposition ----
 DB$H_TD_U83ClSO2 <- DB$H_OF + DB$H_DD_p + DB$S_SO4_DD_g + DB$Cl_DD_g
 DB$H_TD_U83SO2 <- DB$H_OF + DB$H_DD_p + DB$S_SO4_DD_g
-DB$AC_TD_U83_keq <- DB$H_TD_U83SO2 + DB$N_NH4_UC
+DB$AC_TD_U83 <- DB$H_TD_U83SO2 + DB$N_NH4_UC
 DB$AC_TD_U94 <- DB$H_TD_U83ClSO2 + DB$N_NH4_UC + DB$N_NO3_DD_g - DB$N_NH3_DD_g
 DB$AC_TD_U94[which(DB$AC_TD_U94 < 0)] <- 0
 DB$AC_TD_D95 <- DB$H_UC + DB$N_NH4_UC + DB$H_CU_D95 + DB$N_NH4_CU_D95
@@ -505,7 +505,7 @@ keqToKgDF$Substance <- as.character(keqToKgDF$Substance)
   
 #2. Define columns to remain in keq
 ColsKeepKeq <- c("BC_TD_V01","BC_UC_V01","BC_CL","BC_CL_D95","BC_CL_V01","CatIon_UC","Anion_UC","WA_UC","CatIon_OF","Anion_OF","WA_OF",
-                 "WA_CL","WA_DD","H_TD_U83ClSO2","H_TD_U83SO2","AC_TD_U83_keq","AC_TD_U94","AC_TD_D95",
+                 "WA_CL","WA_DD","H_TD_U83ClSO2","H_TD_U83SO2","AC_TD_U83","AC_TD_U94","AC_TD_D95",
                  "H_CU_U83","H_CU_U83Cl","H_CU_U94","N_NH4_H_CU_V01","CatIon_UC_TI","Anion_UC_TI","WA_UC_TI","WA_OF_TI","CatIon_OF_TI","Anion_OF_TI","WA_CL_TI","BC_TD_TI",
                  "BC_UC_TI","BC_CL_TI","N_NH4_H_CU_TI","WA_UC_MA","WA_OF_MA","WA_UC_CB","WA_OF_CB")
 
