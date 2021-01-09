@@ -1,4 +1,3 @@
-#2019-05-27
 #
 #Andreas Schmitz, Bernd Ahrends, Henning Andreae
 #Please report any bugs and suggestions to andreas.schmitz@thuenen.de
